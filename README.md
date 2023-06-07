@@ -7,6 +7,7 @@ This PE is completely based on the ADK of Microsoft. It is designed to give you 
 
 DO NOT COMPARE THIS PE WITH MOST PE ON THE MARKET! Because Microsoft has the following restrictions on WinPE:
 Windows PE is not a general-purpose operating system. It cannot be used for any purpose other than deployment and recovery. After 72 hours of continuous use, it will automatically stop running the shell and restart. During this period, it cannot be configured. More restrictions [here](https://learn.microsoft.com/zh-cn/windows-hardware/manufacture/desktop/winpe-intro?view=windows-10) 
+
 **Note: The recent configuration commands will be based on Windows 10 ADK, and the configuration commands based on Windows 11 will also be introduced shortly**
 
 此PE在此以后，将以**MIN PE**为名。
