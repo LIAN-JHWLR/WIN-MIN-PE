@@ -16,6 +16,8 @@ Windows PE is not a general-purpose operating system. It cannot be used for any 
 
 **[DOWN LOAD HERE](https://www.microsoft.com/zh-CN/download/details.aspx?id=5753)**
 
+**YOU SHOULD DOWNLOAD IT EARLIER,SINCE THE WINDOWS 7 IS NOT SUPPORTED ANYMORE**
+
 此PE在此以后，将以**MIN PE**为名。
 
 此PE完全基于Mirosoft的ADK打造，旨在给您一个E最为贴近原版的WinPE的体验，已经竭尽所能，将所有合适于改PE的功能包全部已经加上，可以在电脑上安装ADK包以后，进行对其更改与自定义，同时，也会给出相应的制作命令，以对于Microsoft官方的文档进行一些指示。
@@ -31,4 +33,5 @@ Windows PE 并不是常规用途操作系统。 除部署和恢复外，它不�
 
 **WINPE_3.0 基于Windows7（7600）**
 
+**尽早下载，因为Windows 7已经再受支持了**
 **[在这里下载](https://www.microsoft.com/zh-CN/download/details.aspx?id=5753)**
