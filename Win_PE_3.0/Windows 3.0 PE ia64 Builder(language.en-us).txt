@@ -1,0 +1,21 @@
+copype ia64 c:\winpe_ia64
+Dism /Mount-wim /wimFile:"c:\winpe_ia64\winpe.wim" /index:1 /MountDir:"C:\WinPE_ia64\mount"
+dism /image:"c:\winpe_ia64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\ia64\WinPE_FPs\winpe-wmi.cab"
+dism /image:"c:\winpe_ia64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\ia64\WinPE_FPs\winpe-hta.cab"
+dism /image:"c:\winpe_ia64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\ia64\WinPE_FPs\winpe-scripting.cab"
+dism /image:"c:\winpe_ia64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\ia64\WinPE_FPs\winpe-pppoe.cab"
+dism /image:"c:\winpe_ia64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\ia64\WinPE_FPs\winpe-mdac.cab"
+dism /image:"c:\winpe_ia64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\ia64\WinPE_FPs\winpe-wds-tools.cab"
+dism /image:"c:\winpe_ia64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\ia64\WinPE_FPs\en-us\lp_en-us.cab"
+dism /image:"c:\winpe_ia64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\ia64\WinPE_FPs\en-us\winpe-wmi_en-us.cab"
+dism /image:"c:\winpe_ia64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\ia64\WinPE_FPs\en-us\winpe-hta_en-us.cab"
+dism /image:"c:\winpe_ia64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\ia64\WinPE_FPs\en-us\winpe-mdac_en-us.cab"
+dism /image:"c:\winpe_ia64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\ia64\WinPE_FPs\en-us\winpe-PPPOE_en-us.cab"
+dism /image:"c:\winpe_ia64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\ia64\WinPE_FPs\en-us\winpe-scripting_en-us.cab"
+dism /image:"c:\winpe_ia64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\ia64\WinPE_FPs\en-us\winpe-wds-tools_en-us.cab"
+Dism /image:C:\winpe_ia64\mount /set-ScratchSpace:512
+Dism /image:C:\winpe_ia64\mount /Set-AllIntl:en-us
+Dism /Unmount-Wim /MountDir:"C:\winpe_ia64\mount" /commit
+ren c:\winpe_ia64\winpe.wim boot.wim
+xcopy c:\winpe_ia64\boot.wim c:\winpe_ia64\iso\sources
+oscdimg -n -bc:\winpe_ia64\efisys.bin -t8/25/2009,12:00:00 c:\winpe_ia64\iso c:\winpe_ia64.iso

@@ -1,0 +1,22 @@
+copype x86 c:\winpe_x86
+Dism /Mount-wim /wimFile:"c:\winpe_x86\winpe.wim" /index:1 /MountDir:"C:\WinPE_x86\mount"
+dism /image:"c:\winpe_x86\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\x86\WinPE_FPs\winpe-fontsupport-zh-tw.cab"
+dism /image:"c:\winpe_x86\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\x86\WinPE_FPs\winpe-wmi.cab"
+dism /image:"c:\winpe_x86\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\x86\WinPE_FPs\winpe-hta.cab"
+dism /image:"c:\winpe_x86\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\x86\WinPE_FPs\winpe-scripting.cab"
+dism /image:"c:\winpe_x86\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\x86\WinPE_FPs\winpe-pppoe.cab"
+dism /image:"c:\winpe_x86\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\x86\WinPE_FPs\winpe-mdac.cab"
+dism /image:"c:\winpe_x86\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\x86\WinPE_FPs\winpe-wds-tools.cab"
+dism /image:"c:\winpe_x86\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\x86\WinPE_FPs\zh-tw\lp_zh-tw.cab"
+dism /image:"c:\winpe_x86\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\x86\WinPE_FPs\zh-tw\winpe-wmi_zh-tw.cab"
+dism /image:"c:\winpe_x86\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\x86\WinPE_FPs\zh-tw\winpe-hta_zh-tw.cab"
+dism /image:"c:\winpe_x86\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\x86\WinPE_FPs\zh-tw\winpe-mdac_zh-tw.cab"
+dism /image:"c:\winpe_x86\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\x86\WinPE_FPs\zh-tw\winpe-PPPOE_zh-tw.cab"
+dism /image:"c:\winpe_x86\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\x86\WinPE_FPs\zh-tw\winpe-scripting_zh-tw.cab"
+dism /image:"c:\winpe_x86\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\x86\WinPE_FPs\zh-tw\winpe-wds-tools_zh-tw.cab"
+Dism /image:C:\winpe_x86\mount /set-ScratchSpace:512
+Dism /image:C:\winpe_x86\mount /Set-AllIntl:zh-tw
+Dism /Unmount-Wim /MountDir:"C:\winpe_x86\mount" /commit
+ren c:\winpe_x86\winpe.wim boot.wim
+xcopy c:\winpe_x86\boot.wim c:\winpe_x86\iso\sources
+oscdimg -n -bc:\winpe_x86\etfsboot.com -t8/25/2009,12:00:00 c:\winpe_x86\iso c:\winpe_x86.iso

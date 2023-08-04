@@ -1,0 +1,21 @@
+copype amd64 c:\winpe_x64
+Dism /Mount-wim /wimFile:"c:\winpe_x64\winpe.wim" /index:1 /MountDir:"C:\winpe_x64\mount"
+dism /image:"c:\winpe_x64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\amd64\winpe_FPs\winpe-wmi.cab"
+dism /image:"c:\winpe_x64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\amd64\winpe_FPs\winpe-hta.cab"
+dism /image:"c:\winpe_x64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\amd64\winpe_FPs\winpe-scripting.cab"
+dism /image:"c:\winpe_x64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\amd64\winpe_FPs\winpe-pppoe.cab"
+dism /image:"c:\winpe_x64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\amd64\winpe_FPs\winpe-mdac.cab"
+dism /image:"c:\winpe_x64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\amd64\winpe_FPs\winpe-wds-tools.cab"
+dism /image:"c:\winpe_x64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\amd64\winpe_FPs\en-us\lp_en-us.cab"
+dism /image:"c:\winpe_x64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\amd64\winpe_FPs\en-us\winpe-wmi_en-us.cab"
+dism /image:"c:\winpe_x64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\amd64\winpe_FPs\en-us\winpe-hta_en-us.cab"
+dism /image:"c:\winpe_x64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\amd64\winpe_FPs\en-us\winpe-mdac_en-us.cab"
+dism /image:"c:\winpe_x64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\amd64\winpe_FPs\en-us\winpe-PPPOE_en-us.cab"
+dism /image:"c:\winpe_x64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\amd64\winpe_FPs\en-us\winpe-scripting_en-us.cab"
+dism /image:"c:\winpe_x64\mount" /add-package /packagepath:"C:\Program Files\Windows AIK\Tools\PETools\amd64\winpe_FPs\en-us\winpe-wds-tools_en-us.cab"
+Dism /image:C:\winpe_x64\mount /set-ScratchSpace:512
+Dism /image:C:\winpe_x64\mount /Set-AllIntl:en-us
+Dism /Unmount-Wim /MountDir:"C:\winpe_x64\mount" /commit
+ren c:\winpe_x64\winpe.wim boot.wim
+xcopy c:\winpe_x64\boot.wim c:\winpe_x64\iso\sources
+oscdimg -n -bc:\winpe_x64\etfsboot.com -t8/25/2009,12:00:00 c:\winpe_x64\iso c:\winpe_x64.iso
